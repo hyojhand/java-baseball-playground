@@ -51,7 +51,6 @@ public class SetTest {
     @CsvSource(value = {"1:True", "2:True", "3:True", "4:False", "5:False"}, delimiter = ':')
     @DisplayName("Set 값 존재 확인 결과 테스트")
     void Set_contains_결과_테스트(int number, boolean expected) {
-        assertThat(numbers.contains(number)).isEqualTo(expected);
         assertEquals(numbers.contains(number), expected);
     }
 }
