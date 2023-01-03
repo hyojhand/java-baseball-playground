@@ -7,10 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SetTest {
@@ -18,11 +19,16 @@ public class SetTest {
 
     @BeforeEach
     void setUp() {
-        numbers = new HashSet<>();
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
+        numbers = Set.of(1, 2, 3);
+    }
+
+    @Test
+    @DisplayName("불변 컬렉션 값 추가 테스트")
+    void Immutable_Collection_테스트() {
+        assertThatThrownBy(() -> {
+            numbers.add(4);
+        }).isInstanceOf(UnsupportedOperationException.class);
+
     }
 
     @Test
@@ -35,9 +41,11 @@ public class SetTest {
     @Test
     @DisplayName("Set 값 존재 확인 테스트")
     void Set_contains_테스트() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
+        assertAll(
+                () -> assertThat(numbers.contains(1)).isTrue(),
+                () -> assertThat(numbers.contains(2)).isTrue(),
+                () -> assertThat(numbers.contains(3)).isTrue()
+        );
     }
 
     @ParameterizedTest
