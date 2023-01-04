@@ -18,7 +18,7 @@ public class CalculatorTest {
     void setUp() {
         calculator = new Calculator();
 
-        String input = "2 + 3 * 5";
+        String input = "2 + 3 * 4 / 2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         value = calculator.input();
@@ -30,13 +30,13 @@ public class CalculatorTest {
     @Test
     void separate_테스트() {
         String[] separateText = calculator.separate(value);
-        assertThat(separateText).contains("2", "+", "3");
+        assertThat(separateText).contains("2", "+", "3", "*", "4", "/", "2");
     }
 
     @Test
     @DisplayName("계산 테스트")
     void calculate_테스트() {
-        assertThat(calculator.calculate()).isEqualTo(25);
+        assertThat(calculator.calculate()).isEqualTo(10);
     }
 
     @Test
