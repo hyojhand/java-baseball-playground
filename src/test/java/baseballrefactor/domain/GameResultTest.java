@@ -29,7 +29,9 @@ public class GameResultTest {
     @DisplayName("게임 종료 테스트")
     void game_end_test() {
         GameResult gameResult = new GameResult();
-        gameResult.setStrikeCount(3);
+        gameResult.reportCount(BallStatus.STRIKE);
+        gameResult.reportCount(BallStatus.STRIKE);
+        gameResult.reportCount(BallStatus.STRIKE);
         assertThat(gameResult.isGameEnd()).isTrue();
     }
 }
