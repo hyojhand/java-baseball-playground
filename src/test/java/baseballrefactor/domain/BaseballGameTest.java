@@ -1,10 +1,12 @@
 package baseballrefactor.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class BaseballGameTest {
 
@@ -22,8 +24,10 @@ public class BaseballGameTest {
 
         GameResult gameResult = baseBallGame.play(balls, userBalls);
 
-        Assertions.assertThat(gameResult.getBallCount()).isEqualTo(1);
-        Assertions.assertThat(gameResult.getStrikeCount()).isEqualTo(0);
+        assertAll(
+                () -> assertThat(gameResult.getBallCount()).isEqualTo(1),
+                () -> assertThat(gameResult.getStrikeCount()).isEqualTo(0)
+        );
     }
 
     @Test
@@ -33,8 +37,10 @@ public class BaseballGameTest {
 
         GameResult gameResult = baseBallGame.play(balls, userBalls);
 
-        Assertions.assertThat(gameResult.getBallCount()).isEqualTo(0);
-        Assertions.assertThat(gameResult.getStrikeCount()).isEqualTo(1);
+        assertAll(
+                () -> assertThat(gameResult.getBallCount()).isEqualTo(0),
+                () -> assertThat(gameResult.getStrikeCount()).isEqualTo(1)
+        );
     }
 
     @Test
@@ -44,8 +50,10 @@ public class BaseballGameTest {
 
         GameResult gameResult = baseBallGame.play(balls, userBalls);
 
-        Assertions.assertThat(gameResult.getBallCount()).isEqualTo(0);
-        Assertions.assertThat(gameResult.getStrikeCount()).isEqualTo(3);
+        assertAll(
+                () -> assertThat(gameResult.getBallCount()).isEqualTo(0),
+                () -> assertThat(gameResult.getStrikeCount()).isEqualTo(3)
+        );
     }
 
 }
