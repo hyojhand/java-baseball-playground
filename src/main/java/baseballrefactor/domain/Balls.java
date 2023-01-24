@@ -11,15 +11,11 @@ public class Balls {
     public static final int MAX_BALL_SIZE = 3;
     private final List<Ball> balls;
 
-    public List<Ball> getBalls() {
-        return balls;
-    }
-
     public Balls(List<Integer> numbers) {
-        this.balls = changeBalls(duplicateNumberCheck(numbers));
+        this.balls = changeBalls(getValidateNumbers(numbers));
     }
 
-    private List<Integer> duplicateNumberCheck(List<Integer> numbers) {
+    private List<Integer> getValidateNumbers(List<Integer> numbers) {
         Set<Integer> elements = new HashSet<>(numbers);
         if (elements.size() != MAX_BALL_SIZE) {
             throw new IllegalArgumentException("중복된 숫자가 있습니다");
@@ -47,5 +43,8 @@ public class Balls {
         return new BallResult(NOTHING);
     }
 
+    public List<Ball> getBalls() {
+        return balls;
+    }
 
 }

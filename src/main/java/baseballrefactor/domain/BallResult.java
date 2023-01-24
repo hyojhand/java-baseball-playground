@@ -9,10 +9,6 @@ public class BallResult {
         this.result = result;
     }
 
-    public BallStatus getResult() {
-        return result;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -24,5 +20,9 @@ public class BallResult {
     @Override
     public int hashCode() {
         return Objects.hash(getResult());
+    }
+
+    public BallStatus getResult() {
+        return result;
     }
 }

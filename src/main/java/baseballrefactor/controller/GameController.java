@@ -13,7 +13,6 @@ public class GameController {
 
     private static final InputView INPUT_VIEW = new InputView();
     private static final OutputView OUTPUT_VIEW = new OutputView();
-    private static List<Integer> numbers;
 
     public static void start() {
         List<Integer> randomNumbers = generateRandomNumber();
@@ -21,7 +20,7 @@ public class GameController {
         GameResult gameResult = new GameResult();
 
         while (!gameResult.isGameEnd()) {
-            numbers = INPUT_VIEW.getNumberList();
+            List<Integer> numbers = INPUT_VIEW.getNumberList();
             gameResult = baseBallGame.play(new Balls(randomNumbers), new Balls(numbers));
             OUTPUT_VIEW.printResult(gameResult);
         }
