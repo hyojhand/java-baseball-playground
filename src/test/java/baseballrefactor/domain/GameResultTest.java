@@ -31,6 +31,7 @@ public class GameResultTest {
         GameResult gameResult = new GameResult();
         gameResult.reportCount(BallStatus.STRIKE);
         gameResult.reportCount(BallStatus.STRIKE);
+        assertThat(gameResult.isGameEnd()).isFalse();
         gameResult.reportCount(BallStatus.STRIKE);
         assertThat(gameResult.isGameEnd()).isTrue();
     }

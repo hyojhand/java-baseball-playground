@@ -48,7 +48,7 @@ class BallsTest {
     }
 
     @Test
-    @DisplayName("notingh 결과 테스트")
+    @DisplayName("nothing 결과 테스트")
     void nothing_결과_테스트() {
         Ball ball = new Ball(5, 0);
         assertThat(balls.compareResult(ball)).isEqualTo(new BallResult(BallStatus.NOTHING));

@@ -31,12 +31,21 @@ class BaseballGameTest {
     }
 
     @Test
-    @DisplayName("게임 결과 2볼 1스트라이크 테스트")
-    void twoBall_oneStrike_테스트() {
-        List<Integer> numbers = List.of(1, 5, 3);
+    @DisplayName("게임 결과 2스트라이크 테스트")
+    void twoStrike_테스트() {
+        List<Integer> numbers = List.of(1, 3, 6);
         assertAll(
                 () -> assertThat(baseballGame.game(randomNumbers, numbers).getGameStatus()).isEqualTo(GameStatus.PLAY),
-                () -> assertThat(baseballGame.game(randomNumbers, numbers).getMessage()).isEqualTo("2볼 1스트라이크"));
+                () -> assertThat(baseballGame.game(randomNumbers, numbers).getMessage()).isEqualTo("2스트라이크"));
+    }
+
+    @Test
+    @DisplayName("게임 결과 3볼 테스트")
+    void threeBall_테스트() {
+        List<Integer> numbers = List.of(3, 5, 1);
+        assertAll(
+                () -> assertThat(baseballGame.game(randomNumbers, numbers).getGameStatus()).isEqualTo(GameStatus.PLAY),
+                () -> assertThat(baseballGame.game(randomNumbers, numbers).getMessage()).isEqualTo("3볼"));
     }
 
     @Test

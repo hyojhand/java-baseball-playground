@@ -35,6 +35,15 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("첫번째 값이 숫자가 아닌 경우")
+    void firstNumber_wrongNumber_Exception() {
+        assertThatThrownBy(() -> {
+            calculator.calculate("+ + 3");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("첫번째 값이 숫자가 아닙니다");
+    }
+
+    @Test
     @DisplayName("잘못된 숫자 계산 예외 테스트")
     void wrong_number_exception_테스트() {
         assertThatThrownBy(() -> {

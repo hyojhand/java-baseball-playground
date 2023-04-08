@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BallTest {
 
@@ -30,6 +31,16 @@ class BallTest {
             assertThat(new Ball(number)).isEqualTo(new Ball(number));
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("올바른 숫자가 아닙니다");
+    }
+
+    @Test
+    @DisplayName("공이 같은 숫자인지 확인하는 테스트")
+    void ball_SameNumber_Test() {
+        Ball ball = new Ball(1, 0);
+        assertAll(
+                () -> assertThat(ball.isSameNumber(new Ball(1, 1))).isTrue(),
+                () -> assertThat(ball.isSameNumber(new Ball(2, 0))).isFalse()
+        );
     }
 
 }

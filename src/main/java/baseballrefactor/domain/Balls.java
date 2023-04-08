@@ -32,15 +32,25 @@ public class Balls {
     }
 
     public BallResult compareResult(Ball ball) {
-        if (balls.get(ball.getOrder()).equals(ball)) {
+        if (balls.contains(ball)) {
             return new BallResult(STRIKE);
         }
 
-        if (balls.contains(ball)) {
+        if (isContainNumber(ball)) {
             return new BallResult(BALL);
         }
 
         return new BallResult(NOTHING);
+    }
+
+    private boolean isContainNumber(Ball otherBall) {
+        for (Ball ball : balls) {
+            if(ball.isSameNumber(otherBall)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public List<Ball> getBalls() {

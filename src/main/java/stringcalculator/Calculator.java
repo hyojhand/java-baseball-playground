@@ -12,7 +12,7 @@ public class Calculator {
 
         String firstValue = splitList.get(0);
         if(!checkNumber(firstValue)) {
-            throw new IllegalArgumentException("잘못된 숫자 입니다");
+            throw new IllegalArgumentException("첫번째 값이 숫자가 아닙니다");
         }
 
         int result = Integer.parseInt(firstValue);
